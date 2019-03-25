@@ -26,7 +26,7 @@ def inspect():
             try:    #异常处理
                 res = requests.get(i, timeout=2,allow_redirects=False)
             except Exception as err:
-                time.sleep(0.1)     #出现异常停止
+                time.sleep(10)     #出现异常停止
                # print(count)
                 if count > 2:       #判断count是否大于2 如果大于2发送钉钉报警并结束循环
                     dingding("请求超时%s"%i)

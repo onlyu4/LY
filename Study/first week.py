@@ -117,7 +117,7 @@ while count <100:
         nub = nub - count
     count += 1
 print(nub)
-'''
+
 
 
 #用户登陆程序
@@ -133,3 +133,4 @@ while True:
         if count == 4:
             break
     count += 1
+'''

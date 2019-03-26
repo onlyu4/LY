@@ -19,7 +19,6 @@ def dingding(massage):
     print(res.text)
 
 def inspect():
-    count = 0
     for i in all_urls:
         count = 0
         while True:

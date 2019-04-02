@@ -220,3 +220,45 @@ print(li)
 #请删除列表中的第2至4个元素，并输出删除元素后的列表
 del li[1:5]
 print(li)
+
+#请将列表所有得元素反转，并输出反转后的列表
+li.reverse()
+print(li)
+
+#请计算出"alex"元素在列表li中出现的次数，并输出该次数
+print(li.count("alex"))
+
+#写代码，有如下列表，利用切片实现每一个功能
+list = [1, 3, 2, "a", 4, "b", 5,"c"]
+
+#通过对li列表的切片形成新的列表l1,l1 = [1,3,2]
+list1 = list[0:3]
+print(list1)
+
+#通过对li列表的切片形成新的列表l2,l2 = ["a",4,"b"]
+list2 = list[4:7]
+print(list2)
+
+#通过对li列表的切片形成新的列表l3,l3 = ["1,2,4,5]
+list3 = list[0::2]
+print(list3)
+
+#通过对li列表的切片形成新的列表l4,l4 = [3,"a","b"]
+list4 = list[1:-2:2]
+print(list4)
+
+#通过对li列表的切片形成新的列表l5,l5 = ["c"]
+list5 = list[7:]
+print(list5)
+
+#通过对li列表的切片形成新的列表l6,l6 = ["b","a",3]
+list6 = list[-3::-2]
+print(list6)
+
+#写代码，有如下列表，按照要求实现每一个功能
+lis = [2, 3, "k", ["qwe", 20, ["k1", ["tt", 3, "1"]], 89], "ab", "adv"]
+
+#将列表lis中的"tt"变成大写（用两种方式）
+#lis[3][0] = "TT"
+lis[3][0][0].upper()
+print(lis)

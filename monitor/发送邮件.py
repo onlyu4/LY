@@ -5,9 +5,9 @@
 import smtplib
 from email.mime.text import MIMEText
 
-msg_from = '17310958353@163.com'  # 发送方邮箱
-passwd = 'Loveme1314'  # 填入发送方邮箱的授权码
-msg_to = 'liuyan1@niuguwang.com'  # 收件人邮箱
+msg_from = 'xxxx@163.com'  # 发送方邮箱
+passwd = 'xxxxx'  # 填入发送方邮箱的授权码
+msg_to = 'xxxxx.com'  # 收件人邮箱
 
 subject = "python邮件测试"  # 主题
 content = "这是我使用python smtplib及email模块发送的邮件"   # 正文

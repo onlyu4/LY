@@ -14,6 +14,20 @@ s = ("%s%s%s"%(s[0],s[2],s[6]))
 print(type(s),s)
 s.replace("原有的","要替换的")  #替换字符串
 s.startswith("")    #判断字符串开头的字符   是的话返回True  不是的话返回False
+s.endswith("")      #判断字符串开头的字符 是的话返回True 不是的话返回False
+s.upper()       #将字符串全转换成大写
+s.lstrip()      #将字符串全转换成小写
+s.strip()       #删除字符串首尾字符，默认为空格
+s.lstrip()      #删除字符串左面的字符
+s.rstrip()      #删除字符串右面的字符
+s.split()       #分割字符串
+s.count("")     #统计符出出现的次数
+s.capitalize()  #首字母大写
+s.index("")     #查找字符串索引位置,没有的话会报错
+s.find("")      #查找字符串索引的位置。没有的话返回-1
+print(len(s))   #统计长度
+
+
 #字符串切片
 #语法：字符串[start;end:步长] 顾头不顾尾   步长控制切片的方向，正数从左到右，负数从右到左
 s = "Java,Python,Php,C++"

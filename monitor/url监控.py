@@ -4,10 +4,8 @@ import requests
 import time
 import json
 
-all_urls = [
-    "https://www.bai.com",
-    "https://www.google.com",
-    "http://www.niuguwang.com"
+all_urls = ["https://hq.bitmixs.com/v1/api/quote/cacheAlert"
+
 ]
 headres = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.79 Safari/537.36'}
 #钉钉机器人
@@ -23,9 +21,9 @@ def inspect():
         count = 0
         while True:
             try:    #异常处理
-                res = requests.get(i, timeout=2,allow_redirects=False)
+                res = requests.get(i, timeout=5,allow_redirects=False,headers=headres)
             except Exception as err:
-                time.sleep(10)     #出现异常停止
+                #time.sleep()     #出现异常停止
                # print(count)
                 if count > 2:       #判断count是否大于2 如果大于2发送钉钉报警并结束循环
                     dingding("请求超时%s"%i)

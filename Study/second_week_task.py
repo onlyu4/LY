@@ -260,5 +260,16 @@ lis = [2, 3, "k", ["qwe", 20, ["k1", ["tt", 3, "1"]], 89], "ab", "adv"]
 
 #将列表lis中的"tt"变成大写（用两种方式）
 #lis[3][0] = "TT"
-lis[3][0][0].upper()
-print(lis)
+print(lis[3][2][1][0].upper())
+
+#将列表中的数字3变成字符串"100"（用两种方式）
+# lis[1] = 100
+# lis[3][2][1][1] = 100
+
+#利用下划线将列表的每一个元素拼接成字符串"alex_eric_rain"
+import json
+li = ["alex", "eric", "rain"]
+li_1 = li[0]%s + li[1]%s + li[2]
+
+
+

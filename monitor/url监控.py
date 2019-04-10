@@ -21,7 +21,7 @@ def inspect():
         count = 0
         while True:
             try:    #异常处理
-                res = requests.get(i, timeout=5,allow_redirects=False,headers=headres)
+                res = requests.get(i, timeout=0.00001,allow_redirects=False,headers=headres)
             except Exception as err:
                 #time.sleep()     #出现异常停止
                # print(count)

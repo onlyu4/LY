@@ -175,7 +175,7 @@ print(count)
 # print("敬爱可亲的%s，最喜欢在%s地%s"%(name,place,hobby))
 
 #等待户输内容，检测户输内容中是否包含敏感字符？如果存在敏感字符提示“存在敏感字符请重新输”，并允许户重新输并打印。敏感字符：“粉嫩”、“铁锤”
-# list_illegal  = ["粉嫩","铁锤"]
+list_illegal  = ["粉嫩","铁锤"]
 # user_input = input("请输入")
 # if user_input in list_illegal:
 #     print("存在敏感字符，请重新输入")
@@ -268,8 +268,18 @@ print(lis[3][2][1][0].upper())
 
 #利用下划线将列表的每一个元素拼接成字符串"alex_eric_rain"
 import json
-li = ["alex", "eric", "rain"]
-li_1 = li[0]%s + li[1]%s + li[2]
+li_1 = ["alex", "eric", "rain"]
+a = "_".join(li_1)
+print(a)
 
+#利用for循环和range打印出下面列表的索引
+li_2 = ["alex", "WuSir", "ritian", "barry", "wenzhou"]
+for i in range(len(li_2)):
+    print(i)
+
+#利用for循环和range找出100以内所有的偶数并将这些偶数插入到一个新列表中
+li_3 = []
+for i in range(0,100,2):
+    print(i)
 
 

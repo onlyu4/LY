@@ -9,7 +9,7 @@ def dingding(massage):
     headers = {"Content-Type":"application/json"}
     data = {"msgtype": "text", "text": {"content":massage}}
     res = requests.post(websock,headers=headers,data=json.dumps(data))
-    print(res.text)
+    #print(res.text)
 
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.79 Safari/537.36'}
 url = ["https://hq.bitmixs.com/v1/api/quote/cacheAlert"]

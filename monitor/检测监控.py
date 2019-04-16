@@ -5,7 +5,7 @@ import requests
 import json
 import time
 def dingding(massage):
-    websock ='https://oapi.dingtalk.com/robot/send?access_token=29723653800ebb7ecbde0da7296cecfc47ef1d4b1e17543c82731714bde2a23a'
+    websock ='https://oapi.dingtalk.com/robot/send?access_token='
     headers = {"Content-Type":"application/json"}
     data = {"msgtype": "text", "text": {"content":massage}}
     res = requests.post(websock,headers=headers,data=json.dumps(data))

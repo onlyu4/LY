@@ -10,7 +10,7 @@ all_urls = ["https://hq.bitmixs.com/v1/api/quote/cacheAlert"
 headres = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.79 Safari/537.36'}
 #钉钉机器人
 def dingding(massage):
-    websock ='https://oapi.dingtalk.com/robot/send?access_token=de95405b0bdfa46ea4f3b621516427102fcf1967ffe0ab12ca8d031205d5bbe1'
+    websock ='https://oapi.dingtalk.com/robot/send?access_token='
     headers = {"Content-Type":"application/json"}
     data = {"msgtype": "text", "text": {"content":massage}}
     res = requests.post(websock,headers=headers,data=json.dumps(data))

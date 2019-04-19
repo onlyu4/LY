@@ -149,3 +149,15 @@ def factorial(n):
     return number
 print(factorial(2))
 
+#写函数，返回一个扑克牌列表，里面有52项，每一项是一个元组
+def card():
+     temp_list = []
+     card =[]
+     for i in range(2, 11):
+         temp_list.append(i)
+     temp_list.extend(["J", "Q", "K", "A"])
+     for i in temp_list:
+         for card_type in ["黑桃", "红桃", "方块", "草花"]:
+             a = (card_type, i)
+             card.append(a)
+     return card

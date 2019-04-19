@@ -1,20 +1,20 @@
 
 list_2 = []
-with open("a1.txt","r",encoding="utf-8") as f:
-    list_1 = f.readline().strip().split(",")  #取表头并进行切片
-    #print(list_1)
-    for i in f:
-        #print(i)
-        list = i.strip().split(",")#取到之后的所有内容
-        #print(list)
-        dic = {}
-        for i in range(len(list_1)):    #循环的次数是list_1的长度
-            dic[list_1[i]] = list[i]    #定义字典的key和value
-        list_2.append(dic)      #将字典添加到列表中
-print(list_2)
+# with open("a1.txt","r",encoding="utf-8") as f:
+#     list_1 = f.readline().strip().split(",")  #取表头并进行切片
+#     #print(list_1)
+#     for i in f:
+#         #print(i)
+#         list = i.strip().split(",")#取到之后的所有内容
+#         #print(list)
+#         dic = {}
+#         for i in range(len(list_1)):    #循环的次数是list_1的长度
+#             dic[list_1[i]] = list[i]    #定义字典的key和value
+#         list_2.append(dic)      #将字典添加到列表中
+# print(list_2)
 
 #传入函数的字符串中,[数字]、[字母]、[空格] 以及 [其他]的个数，并返回结果
-user_input = input("请输入：")
+#user_input = input("请输入：")
 def count(user_input):
     number = 0
     letter = 0
@@ -33,7 +33,7 @@ def count(user_input):
     print("数字的个数为:%s"%number)
     print("空格个数为:%s"%space)
     print("其他字符个数为:%s"%other)
-count(user_input)
+#count(user_input)
 
 #写函数，接收两个数字参数，返回比较大的那个数字
 def campare(a,b):
@@ -74,43 +74,78 @@ def information(name,sex,age,education):
 #information("刘岩","男",22,"本科")
 
 #支持用户持续输入，Q或者q退出，性别默认为男，如果遇到女学生，则把性别输入女
-def information_second(name,age,education,sex="男"):
-    with open("student_msg","a",encoding="utf-8") as f:
-        f.write("姓名：%s\t性别：%s\t年龄：%s\t学历：%s\t" % (name, sex, age, education))
-while True:
-    user_input = input("按Q或者q退出")
-    if user_input.upper() == "Q":
-        break
-    else:
-        name = input("请输入您的名字")
-        age = input("请输入您的年龄")
-        education = input("请输入您的学历\n")
-        sex = input("请输入您的性别")
+# def information_second(name,age,education,sex="男"):
+#     with open("student_msg","a",encoding="utf-8") as f:
+#         f.write("姓名：%s\t性别：%s\t年龄：%s\t学历：%s\t" % (name, sex, age, education))
+# while True:
+#     user_input = input("按Q或者q退出")
+#     if user_input.upper() == "Q":
+#         break
+#     else:
+#         name = input("请输入您的名字")
+#         age = input("请输入您的年龄")
+#         education = input("请输入您的学历\n")
+#         sex = input("请输入您的性别")
     #information_second(name,age,education,sex)
 
 #写函数，用户传入修改的文件名，与要修改的内容，执行函数，完成整个文件的批量修改操作
-import os
-def file(name_file_old,file_content_old,file_content,name_file_new):
-    with open(name_file_old, "r", encoding="utf-8") as f, open(name_file_new, "w", encoding="utf-8") as f2:
-        for i in f:
-            if file_content_old in i:
-                i = i.replace(file_content_old,file_content)
-                f2.write(i)
-            else:
-                f2.write(file_content)
-    os.remove(name_file_old)
-    os.mkdir(name_file_new)
-name_file_old = input("请输入您要修改内容的文件名：")
-file_content_old = input("请输入您要替换的旧内容：")
-file_content = input("请输入您要修改的文件内容：")
-name_file_new = input("请输入您更改后的文件名：")
-file(name_file_old,file_content_old,file_content,name_file_new)
+# import os
+# def file(name_file_old,file_content_old,file_content,name_file_new):
+#     with open(name_file_old, "r", encoding="utf-8") as f, open(name_file_new, "w", encoding="utf-8") as f2:
+#         for i in f:
+#             if file_content_old in i:
+#                 i = i.replace(file_content_old,file_content)
+#                 f2.write(i)
+#             else:
+#                 f2.write(file_content)
+#     os.remove(name_file_old)
+#     os.mkdir(name_file_new)
+# name_file_old = input("请输入您要修改内容的文件名：")
+# file_content_old = input("请输入您要替换的旧内容：")
+# file_content = input("请输入您要修改的文件内容：")
+# name_file_new = input("请输入您更改后的文件名：")
+# file(name_file_old,file_content_old,file_content,name_file_new)
 
 #代码，回答：代码中,打印出来的值a,b,c分别是什么？为什么？
-a=10
-b=20
-def test5(a,b):
-    print(a,b)
-    # c = test5(b,a)
-    # print(c)
-print(test5(1,2))
+# a=10
+# b=20
+# def test5(a,b):
+#     print(a,b)
+#     # c = test5(b,a)
+#     # print(c)
+# print(test5(1,2))
+
+#写函数,接收两个数字参数,将较小的数字返回
+def compare(a,b):
+    if a > b:
+        return b
+    else:
+        return a
+print(compare(1,2))
+
+#写函数,接收一个参数(此参数类型必须是可迭代对象),将可迭代对象的每个元素以’_’相连接,形成新的字符串,并返回
+
+
+def splicing(arg):
+    ll = []
+    for i in arg:
+        ll.append(str(i))
+    return "_".join(ll)
+print(splicing([1,"老男孩"]))
+
+#写函数，传入n个数，返回字典{‘max’:最大值,’min’:最小值}
+def size(*args):
+    dic_1 = {}
+    dic_1["max"] = max(args)
+    dic_1["min"] = min(args)
+    return dic_1
+print(size(12,23,4,5,6,7,8,))
+
+#写函数，传入一个参数n，返回n的阶乘
+def factorial(n):
+    number = 1
+    for i in range(n,0,-1):
+        number = number * i
+    return number
+print(factorial(2))
+

@@ -267,7 +267,6 @@ lis[1] = 100
 lis[3][2][1][1] = 100
 
 #利用下划线将列表的每一个元素拼接成字符串"alex_eric_rain"
-import json
 li_1 = ["alex", "eric", "rain"]
 a = "_".join(li_1)
 print(a)

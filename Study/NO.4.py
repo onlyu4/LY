@@ -93,15 +93,12 @@ s = sorted(lis_6,key=func_3)
 print(s)
 
 #装饰器
-def func_4():
-    print("1111")
-
 def wapper(fn):
     def innter():
         print("222")
         fn()
         print("33333")
     return innter()
-
-func_4 = wapper(func_4)
-func_4()
+@wapper
+def func_4():
+    print("1111")

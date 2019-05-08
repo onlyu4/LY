@@ -40,9 +40,8 @@ def red_envelopes():
         lis.append(amount)
     for i in lis:
         each = (i / sum(lis)) * money
-        print(round(each, 2))
+        print(round(each,2))
 red_envelopes()
-
 #分别列出给定目录下所有的文件和文件夹
 import os
 print(os.listdir("C:/"))

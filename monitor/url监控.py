@@ -23,9 +23,9 @@ def inspect():
             count = 0
             while True:
                 try:    #异常处理
-                    if "head" in i:
+                    if "HEAD" in i:
                         res = requests.head(i[0], timeout=2, allow_redirects=False, headers=headres)
-                    elif "post" in i:
+                    elif "POST" in i:
                         res = requests.post(i[0], timeout=2, allow_redirects=False, headers=headres)
                     else:
                         res = requests.get(i[0], timeout=2, allow_redirects=False, headers=headres)

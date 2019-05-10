@@ -16,7 +16,12 @@ min_diff = diff_min % 60
 print(f"相差了{diff_hours}小时{min_diff}分钟")
 
 #计算当前时间所在月1号的时间戳
-print(time.time()-(60*60*24*30))
+# import time
+#
+# str_time = time.strftime("%Y-%m")
+# #struct_time = time.strptime(str_time,"%Y-%m")
+# struct_time = time.strptime(str_time+"-01","%Y-%m-%d")
+# print(time.mktime(struct_time))
 
 
 #生成一个6位随机验证码(包含数字和大小写字母)

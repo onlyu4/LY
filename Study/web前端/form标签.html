@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>form表单</title>
+</head>
+<body>
+    <form>
+        <!--input  用户输入框 text为文本形式 password为加密形式-->
+        <p>
+            <label for="username">账号</label>
+             <input type="text" placeholder="请输入账号" id="username">
+        </p>
+        <p>
+            <label for="passwd">密码</label>
+             <input type="password" placeholder="请输入密码" id="passwd">
+        </p>
+        <p>
+            <!--radio 单选框  checked 默认选项-->
+            男 <input type="radio" name="sex" checked="checked">
+            女 <input type="radio" name="sex">
+        </p>
+
+            <h4>您的爱好</h4>
+
+        <p>
+            <!--checkbox  复选框-->
+            抽烟 <input type="checkbox">
+            喝酒 <input type="checkbox">
+            烫头 <input type="checkbox">
+        </p>
+
+        按住CTRL进行多项选择
+
+        <P>
+            <!--下拉框表单  option对应相应的选项-->
+            <select multiple>
+                <option>抽烟</option>
+                <option>喝酒</option>
+                <option>烫头</option>
+            </select>
+        </P>
+       <strong> 个人简介</strong>
+
+        <p>
+            <!--文本输入框 ros 高度  cols 长度-->
+            <textarea rows="10" cols="30"></textarea>
+        </p>
+
+        <p>
+            <!--submit 提交按钮 可以通过修改value修改其中的文本样式-->
+            <input type="submit" value="立即注册">
+
+            <!--清除网页上的表单内容-->
+            <input type="reset" value=重置>
+
+        </p>
+    </form>
+
+</body>
+</html>

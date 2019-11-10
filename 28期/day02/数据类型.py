@@ -69,6 +69,15 @@ print(Frist)
 #判断字符串是否由数字组成
     #isdigit()判断字符串是否由字符串组成
 
+#判断是否由字母和数字组成
+test = "zhangsan1"
+print(test.isalnum())
+
+#判断是否由字母组成
+print(test.isalpha())
+
+
+
 #计数：
     #count()，统计xxx字符在字符串中出现的次数
 
@@ -87,11 +96,11 @@ print(Frist)
 # for i in test:
 #     print(i)
 
-count = 0
-test = input(":")
-for i in test:
-    if i.isdigit():
-        count+=1
-print(count)
+# count = 0
+# test = input(":")
+# for i in test:
+#     if i.isdigit():
+#         count+=1
+# print(count)
 
 

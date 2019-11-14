@@ -1,4 +1,3 @@
-
 #                    _ooOoo_
 #                   o8888888o
 #                   88" . "88
@@ -29,53 +28,20 @@
 #          奔驰宝马贵者趣，公交自行程序员。
 #          别人笑我忒疯癫，我笑自己命太贱；
 #          不见满街漂亮妹，哪个归得程序员？
-
-list =  ["alex", "WuSir", "ritian", "barry", "wenzhou","erci"]
-l2=[1,"a",3,4,"heart"]
-s = "qwert"
-del_list = []
-#1、计算列表的长度
-print(len(list))
-
-#2、在列表中追加"seven"
-list.append("seven")
+list = []
+with open("info.txt","r",encoding="utf-8")as f:
+    for i in f:
+        i = i.strip()
+        #print(i)
+        line = i.split(",")
+        #print(line)
+        order = line[0]
+        #print(order)
+        sertion =line[1]
+        number =line[2]
+        age =line[3]
+        remarks =line[4]
+        dict = {"序号":order,"部门":sertion,"人数":number,"平均年龄":age,"备注":remarks}
+        list.append(dict)
+list.pop(0)
 print(list)
-
-#3、在第1个元素位置添加元素Tony
-list.insert(0,"Tony")
-print(list)
-
-#4、修个第二个位置为Kelly
-list[1] = "Kelly"
-print(list)
-
-#5、将l2=[1,"a",3,4,"heart"]合并到list中
-list.extend(l2)
-print(list)
-
-#6、将字符串s = "qwert添加到列表中
-list.extend(s)
-print(list)
-
-#7、删除列表中“eric”并输出删除后的列表
-list.pop(6)
-print(list)
-
-#8、删除列表中第二个元素
-list.pop(1)
-print(list)
-
-#9、删除列表第二道第四哥元素
-del list[1:3]
-print(list)
-
-#10、反转列表
-list.reverse()
-print(list)
-
-li = ["alex", "eric", "rain"]
-#利用下划线讲列表的每一个元素的拼接
-s = "_".join(li)
-print(s)
-
-#

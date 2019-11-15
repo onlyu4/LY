@@ -55,4 +55,4 @@ with open("1.txt","r",encoding="utf-8") as f,open("1.txt.back","a",encoding="utf
 os.remove("1.txt")
 #把备份文件的名字替换成源文件的文件名
 os.rename("1.txt.back","1.txt")
-
+###

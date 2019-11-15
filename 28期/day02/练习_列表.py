@@ -52,4 +52,3 @@ print(list)
 list.extend(l2)
 print(list)
 
-#6、将字符串s = "qwert添加到列表中

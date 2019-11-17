@@ -72,13 +72,14 @@ def add():
         dict_info["Birthy"] = birthday
         dict_info["Salary"] = salary
         dict_info["Input_time"] = input_time
-        js = json.dumps(dict_info)
-        f.write(f"{js}\n")
+        print(dict_info)
+        f.write(str(f"{dict_info}\n"))
         menu()
-    pass
 
 
 def del_info():
+    with open("emp.db", "a", encoding="utf-8")as f:
+
     pass
 
 

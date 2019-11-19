@@ -41,27 +41,27 @@
 #   显示出所有员⼯工的基本信息
 
 import json
+import os
 def menu():
     a = True
     while a:
-        user_input = input("查看员工信息\t添加员工信息\n修改员工信息\n删除员工信息\n退出")
-        if user_input == "查看员工信息":
+        user_input = input("1、查看员工信息\n2、添加员工信息\n3、修改员工信息\n4、删除员工信息\n5、退出")
+        if user_input == "1":
             see()
-        elif user_input == "添加员工信息":
+        elif user_input == "2":
             add()
-        elif user_input == "修改员工信息":
+        elif user_input == "3":
             revise()
-        elif user_input == "删除员工信息":
+        elif user_input == "4":
             del_info()
-        elif user_input == "退出":
+        elif user_input == "5":
             a = False
         else:
             print("请输入正确的选项")
-    pass
 
 def add():
-    dict_info ={}
-    with open("emp.db","a",encoding="utf-8")as f:
+    dict_info = {}
+    with open("emp.db", "a", encoding="utf-8")as f:
         id = input("请输入员工的ID：")
         name = input("请输入员工的姓名：")
         birthday = input("请输入员工的生日：")
@@ -73,19 +73,44 @@ def add():
         dict_info["Salary"] = salary
         dict_info["Input_time"] = input_time
         print(dict_info)
-        f.write(str(f"{dict_info}\n"))
-        menu()
+        f.write(str(f"{dict_info}" + "\n"))
+
 
 
 def del_info():
-    with open("emp.db", "a", encoding="utf-8")as f:
+    with open("emp.db", "r", encoding="utf-8")as f,open("emp.db.bak","w",encoding="utf-8") as f2:
+        user_input = input("请输入你要删除的员工ID：")
+        see()
+        for i in f:
+            if user_input in i.strip():
+                continue
+            f2.write(i)
+    os.remove("emp.db")
+    os.rename("emp.db.bak","emp.db")
 
-    pass
 
 
 def revise():
-    pass
+    with open("emp.db","r",encoding="utf-8") as f,open("emp.db.bak","w",encoding="utf-8") as f2:
+        see()
+        id = input("请输入的要修改员工的ID：")
+        salary = input("请输入修改后的工资")
+        for i in f:
+            info = eval(i.strip())
+            if info["ID"] == id:
+                info["Salary"] = salary
+            f2.write(str(info) + "\n")
+    os.remove("emp.db")
+    os.rename("emp.db.bak", "emp.db")
+
+
+
+
 
 
 def see():
-    pass
+    with open("emp.db","r",encoding="utf-8")as f:
+        for i in f:
+            print(i.strip())
+
+menu()

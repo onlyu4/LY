@@ -81,4 +81,5 @@ lst = ["斯琴格日乐", "斯琴高娃", "斯大林", "斯坦达麦尔", "斯�
 #print(s)
 
 name = filter(lambda n: n.startswitch("斯"), lst)
-print(name(lst(name))
+n = name(lst)
+print(n)

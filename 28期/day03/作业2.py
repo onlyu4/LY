@@ -71,9 +71,9 @@ def add():
         dict_info["name"] = name
         dict_info["Birthy"] = birthday
         dict_info["Salary"] = salary
-        dict_info["Input_time"] = input_time
+        dict_info["Input_time"] = input_time    #将输入的信息转化为字典
         print(dict_info)
-        f.write(str(f"{dict_info}" + "\n"))
+        f.write(str(f"{dict_info}" + "\n"))         #将字典转成字符串写入文件夹
 
 
 
@@ -82,9 +82,9 @@ def del_info():
         user_input = input("请输入你要删除的员工ID：")
         see()
         for i in f:
-            if user_input in i.strip():
-                continue
-            f2.write(i)
+            if user_input in i.strip():     #判断用户输入的字符串是否在文件中
+                continue        #在的话就跳过，进行下一次循环
+            f2.write(i)     #跳过要删除的行并把其他内容写进文档
     os.remove("emp.db")
     os.rename("emp.db.bak","emp.db")
 
@@ -96,21 +96,15 @@ def revise():
         id = input("请输入的要修改员工的ID：")
         salary = input("请输入修改后的工资")
         for i in f:
-            info = eval(i.strip())
-            if info["ID"] == id:
-                info["Salary"] = salary
+            info = eval(i.strip())     #文档中的字符串转换成字典
+            if info["ID"] == id:        #如果用户输入的ID==字典中的ID
+                info["Salary"] = salary     #就更改字典中所对应的key
             f2.write(str(info) + "\n")
     os.remove("emp.db")
     os.rename("emp.db.bak", "emp.db")
-
-
-
-
-
 
 def see():
     with open("emp.db","r",encoding="utf-8")as f:
         for i in f:
             print(i.strip())
-
 menu()

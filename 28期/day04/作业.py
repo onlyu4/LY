@@ -31,10 +31,15 @@
 #          不见满街漂亮妹，哪个归得程序员？
 import time
 import os
-def hone_page():
-    global login_status
+import json
+import datetime
+#用户名
+username = None
+#登陆状态
+stats = False
+def home_page():
     while 1:
-        user_input = input("欢迎来到博客园首页\n1、请登录\n2、请注册\n3、文章界面\n4、日记界面\n5、注销\n6、退出")
+        user_input = input("欢迎来到博客园首页\n请输入你要操作的序号\n1、请登录\n2、请注册\n3、文章界面\n4、日记界面\n5、注销\n6、退出")
         if user_input == "1":
             login()
         elif user_input == "2":
@@ -44,129 +49,143 @@ def hone_page():
         elif user_input == "4":
             diary()
         elif user_input == "5":
-            login_status = False
-        elif  user_input == "6":
+            log_off()
+        elif user_input == "6":
             break
-
-login_status = False
-def decorator_login(fn):
-    global login_status
-    def inner(*args,**kwargs):
-        if login_status == True:
-            fn(*args,**kwargs)
         else:
-            login()
-            fn(*args,**kwargs)
-    return inner
-
+            print("请输入正确的序号")
 
 def register():
-    global login_status
+    global username
+    global login_stats
     dict_info = {}
-    with open("regiser.txt","a",encoding="utf-8")as f:
-        name = input("请输入你的账号：")
+    while 1:
+        name = input(" 请输入您要注册的账号：")
         passwd = input("请输入密码：")
         dict_info["name"] = name
         dict_info["passwd"] = passwd
-        f.write(str(dict_info)+"\n")
-        login_status = True
+        with open("register.txt", "r", encoding="utf-8") as f:
+            f.readline()
+            for i in f:
+                line = json.loads(i)
+                if line["name"] == name:
+                    print("用户名已存在")
+                    break
+            else:
+                with open("register.txt", "a", encoding="utf-8") as f:
+                    js = json.dumps(dict_info)
+                    f.write(js + "\n")
+                    print("注册成功！！！")
+                    username = name
+                    login_stats = True
+                    with open(f"{name}.文章.txt","w",encoding="utf-8") as f,open(f"{name}.日记.txt","w",encoding="utf-8")as f2:
+                        break
 
 def login():
-    global login_status
-    with open("regiser.txt","r",encoding="utf-8")as f:
-        count = 0
-        while count < 3:
-            name = input("请输入您的账号：")
-            passwd = input("请输入您的密码：")
+    global username
+    global login_stats
+    for i in range(3):
+        with open("register.txt","r",encoding="utf-8") as f:
+            name = input("请输入你的账号：")
+            passwd = input("请输入你的密码：")
+            #f.readline()
             for i in f:
-                dict_info = eval(i.strip())
-                if dict_info["name"] == name and dict_info["passwd"] == passwd:
-                    print("恭喜你登陆成功！")
-                    login_status = True
+                line = i.strip()
+                line = json.loads(line)
+                if name == line["name"] and passwd == line["passwd"]:
+                    username = name
+                    login_stats = True
+                    print("登陆成功")
+                    username = name
+                    login_stats = True
                     return
-                else:
-                    register()
-    return
+            else:
+                print("登陆失败,账号或密码错误")
 
+def log_off():
+    global username
+    global login_stats
+    login_stats =False
+    print(f"{username}已退出登陆")
 
+def log(fn):
+    def inner(*args,**kwargs):
+        s = f"用户:{username}在{datetime.datetime.now()}访问了{fn.__name__}\n"
+        with open("blog.log","a",encoding="utf-8") as  f:
+            f.write(s)
+        ret = fn(*args,**kwargs)
+        return ret
+    return inner
+
+def lgoni_stats(fn):
+    def inner(*args,**kwargs):
+        while username == None or stats == False:
+            login()
+        else:
+            ret = fn(*args,**kwargs)
+            return ret
+    return inner
+@lgoni_stats
+@log
 def article():
     while 1:
-        user_input = input("1、查看文章\n2、添加文章\n3、删除文章\n4、返回上一单元")
+        user_input = input("请输入你要操作的序号\n1、查看文章\n2、添加文章\n3、删除文章\4返回上一单元")
         if user_input == "1":
-            article_see()
+            with open(f"{username}.文章.txt","r",encoding="utf-8") as f:
+                for i in f:
+                    print(i.strip())
         elif user_input == "2":
-            article_add()
+            with open(f"{username}.文章.txt", "a", encoding="utf-8") as f:
+                title = input("请输入文章的标题：")
+                content = input("请输入文章的内容：")
+                title_info = {}
+                title_info["标题"] = title
+                title_info["内容"] = content
+                f.write(json.dumps(title_info))
         elif user_input == "3":
-            article_del()
+            with open(f"{username}.文章.txt", "a", encoding="utf-8") as f,open(f"{username}.文章.txt.bak", "a", encoding="utf-8") as f2:
+                del_title = input("请输入你要删除的文章：")
+                f.readline()
+                for i in f:
+                    line = json.loads(i)
+                    if del_title == line["标题"]:
+                        continue
+                    f2.write(json.dumps(line))
+            os.remove(f"{username}.文章.txt")
+            os.rename(f"{username}.文章.txt.bak",f"{username}.文章.txt")
         elif user_input == "4":
             break
-        else:
-            print("请选择正确的选项")
-def article_see():
-    with open("article.txt", "r", encoding="utf-8")as f:
-        for i in f:
-            print(i)
-
-def article_del():
-    article_see()
-    with open("article.txt", "r", encoding="utf-8") as f, open("article.txt.bak", "w", encoding="utf-8") as f2:
-        del_input = input("请输入你要删除的文章标题：")
-        for i in f:
-            info = eval(i.strip())
-            if info["标题"] == del_input:
-                continue
-            f2.write(str(info))
-    os.remove("article.txt")
-    os.rename("article.txt.bak", "article.txt")
-
-def article_add():
-    dict = {}
-    with open("article.txt", "a", encoding="utf-8") as f:
-        title = input("请输入文章的标题：")
-        content = input("请输入文章的内容：")
-        dict["标题"] = title
-        dict["内容"] = content
-        f.write(str(dict))
-@decorator_login
+@log
+@lgoni_stats
 def diary():
     while 1:
-        user_input = input("1、查看日记\n2、添加日记\n3、删除日记\n4、返回上一单元")
+        user_input = input("请输入你要操作的序号\n1、查看日记\n2、添加日记\n3、删除日记\4返回上一单元")
         if user_input == "1":
-            diary_see()
+            with open(f"{username}.日记.txt", "r", encoding="utf-8") as f:
+                for i in f:
+                    print(i.strip())
         elif user_input == "2":
-            diary_add()
+            with open(f"{username}.日记.txt", "a", encoding="utf-8") as f:
+                # title = input("请输入文章的标题：")
+                content = input("请输入文章的内容：")
+                title_info = {}
+                title_info["时间"] = datetime.datetime.now()
+                title_info["内容"] = content
+                f.write(json.dumps(title_info))
         elif user_input == "3":
-            diary_del()
+            with open(f"{username}.文章.txt", "a", encoding="utf-8") as f, open(f"{username}.文章.txt.bak", "a",
+                                                                              encoding="utf-8") as f2:
+                del_title = input("请输入你要删除的日记：")
+                f.readline()
+                for i in f:
+                    line = json.loads(i)
+                    if del_title == line["时间"]:
+                        continue
+                    f2.write(json.dumps(line))
+            os.remove(f"{username}.日记.txt")
+            os.rename(f"{username}.日记.txt.bak", f"{username}.日记.txt")
         elif user_input == "4":
             break
-        else:
-            print("请输入正确的选项")
-def diary_add():
-        with open("diary.txt","a",encoding="utf-8") as  f:
-            input_time = time.strftime("%Y-%m-%d",time.localtime())
-            diary_content = input("请写入你要写的内容的日记：")
-            f.write(f"{input_time}***{diary_content}" + "\n")
-
-def diary_see():
-    with open("diary.txt","r",encoding="utf-8") as f:
-        #f.readline()
-        count = 0
-        for i in f:
-            count += 1
-            print(count,i.strip().split("***"))
 
 
-def diary_del():
-    diary_see()
-    with open("diary.txt", "r", encoding="utf-8") as f,open("diary.txt.bak","w",encoding="utf-8") as f2:
-        user_input = input("请输入你要删除的日记日期")
-        f.readline()
-        for i in f:
-            if user_input in i.strip().split("***"):
-                continue
-            f2.write(str(i))
-    os.remove("diary.txt")
-    os.rename("diary.txt.bak","diary.txt")
-hone_page()
-
-#print(time.strftime("%Y-%m-%d %H:%M:%S",time.localtime()))
+home_page()

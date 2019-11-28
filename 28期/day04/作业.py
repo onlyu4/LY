@@ -36,7 +36,7 @@ import datetime
 #用户名
 username = None
 #登陆状态
-stats = False
+login_stats = False
 def home_page():
     while 1:
         user_input = input("欢迎来到博客园首页\n请输入你要操作的序号\n1、请登录\n2、请注册\n3、文章界面\n4、日记界面\n5、注销\n6、退出")
@@ -119,7 +119,7 @@ def log(fn):
 
 def lgoni_stats(fn):
     def inner(*args,**kwargs):
-        while username == None or stats == False:
+        while username == None or lgoni_stats == False:
             login()
         else:
             ret = fn(*args,**kwargs)

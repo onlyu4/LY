@@ -69,6 +69,7 @@ for i in urls:
         # print(sub_content)
         sub_div = sub_content.find("div",attrs={"class":"ImageBody"})
         sub_img = sub_div.find("img")
+        # 获取每个页面的图片地址
         sub_src = sub_img.get("src")
         photo_list.append(sub_src)
         # break

@@ -121,9 +121,8 @@ def lgoni_stats(fn):
     def inner(*args,**kwargs):
         while username == None or stats == False:
             login()
-        else:
-            ret = fn(*args,**kwargs)
-            return ret
+        return fn(*args,**kwargs)
+
     return inner
 @lgoni_stats
 @log

@@ -29,29 +29,50 @@
 #          奔驰宝马贵者趣，公交自行程序员。
 #          别人笑我忒疯癫，我笑自己命太贱；
 #          不见满街漂亮妹，哪个归得程序员？
+from bs4 import BeautifulSoup
+import requests
+url = "http://www.umei.cc/meinvtupian/meinvxiezhen/"
+req = requests.get(url)
+req.encoding = "utf-8"
+#创建一个soup的对象
+soup = BeautifulSoup(req.text,"lxml")
 
-import re
-#匹配出来的是一个列表
-obj = re.findall(r"\d+","hfajshf9q8u-0()-")
-print(obj)
+#打印title
+# print(soup.title)
 
-#匹配到的字符串是一个迭代器
-obj = re.finditer(r"\d+","hfajshf9q8u-0()-")
-for i in obj:
-    print(i.group())
+#打印head
+# print(soup.head)
 
-#只匹配已xxx开头的字符串
-obj = re.match(r"\d+","74353fajshf9q8u-0()-")
-print(obj.group())
+#打印a标签
+# print(soup.a)
 
+#打印p标签
+# print(soup.p)
+#
+# print(soup.name)
+# print(soup.head.name)
 
-#得到一个结果就返回
-obj = re.search(r"\d+","hfajshf9q8u-0()-")
-print(obj.group())
+#打印标签的属性
+# print(soup.a.attrs)
+# print(soup.p.attrs["class"])
 
+#NavigableString获取标签的内部文字
+print(soup.p.string)
 
-re.compile(r"1*.?")
+#BeautifulSoup对象表示的是一个文档的全部内容,大部分时候,可以把它当作 Tag 对象
 
+#tag 的 .content 属性可以将tag的子节点以列表的方式输出
+# print(soup.div.contents)
 
+#.children它返回的不是一个 list，不过我们可以通过遍历获取所有子节点。
+# print(soup.div.children)
+# for i in soup.div.children:
+#     print(i)
+
+#.descendants属性可以对所有tag的子孙节点进行递归循环
+for i in soup.p.descendants:
+    print(i)
+
+#
 
 

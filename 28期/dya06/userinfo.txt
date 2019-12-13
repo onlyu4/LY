@@ -1,0 +1,4 @@
+{"username": "admin", "passwd": "123456", "type": 0}
+{"username": "zhangsan", "passwd": "123456", "user_type": "1", "course_info": [1,2,3]}
+{"username": "wangwu", "passwd": "123456", "user_type": "1", "course_info": []}
+{"username": "zhaosi", "passwd": "123456", "user_type": "1", "course_info": []}

@@ -38,8 +38,8 @@ def process_bar(now,totle):
     sys.stdout.write(f"\r[{baifen  * '='}~{baifen}%]")
 
 
-trans = paramiko.Transport(("123.206.16.61",22))
-trans.connect(username="root",password="nidaye..!")
+trans = paramiko.Transport(("39.105.33.190",22))
+trans.connect(username="test",password="123456")
 #ssh通信
 ssh = paramiko.SSHClient()
 #
@@ -47,8 +47,8 @@ ssh = paramiko.SSHClient()
 ssh._transport = trans
 #
 # #执行命令
-stdin, stdout, stderror = ssh.exec_command("ls")
-print(stdout.read().decode("utf-8"))
+stdin, stdout, stderror = ssh.exec_command("pwd")
+print(stdout.read())
 
 # ftp = trans.open_sftp_client()
 # ftp.put("1.jpg","高清美女写真集.jpg",callback=process_bar)

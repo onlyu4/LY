@@ -29,9 +29,19 @@
 #          奔驰宝马贵者趣，公交自行程序员。
 #          别人笑我忒疯癫，我笑自己命太贱；
 #          不见满街漂亮妹，哪个归得程序员？
+import psutil
+def get_mem_info():
+   mem = psutil.virtual_memory()
+   mem1 = str(mem.total/1024/1024/1024)
+   mem2 = str(mem.free/1024/1024/1024)
+   print("内存总数为:",mem1[0:3],"G")
+   print("空闲内存总数:", mem2[0:3], "G")
 
-import itchat
-itchat.auto_login(hotReload=True)     # 登陆微信 hotReload记录登陆的状态
-myfriends = itchat.search_friends(name="就是个弟弟")
-itchat.send("这是一条测试消息。。。",toUserName=myfriends)       #send中，前半部分为要发送的消息，后半部分为要发送的人
+def get_cpu_info():
+   cpu = psutil.cpu_percent(True)
+   print(cpu)
 
+if __name__ == '__main__':
+   # while 1:
+   get_cpu_info()
+      # get_mem_info()
